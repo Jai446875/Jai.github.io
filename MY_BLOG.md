@@ -81,7 +81,7 @@
          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD4Aw4nFInN4W79LN1Er4_Ro1YIvw-0Rq6LQ&s" alt="What is Data?" width = 200>
          <img src="https://cdn.botpenguin.com/assets/website/Big_Data_35e26a7d4d.webp" alt="Data" width = 200>
          <p>Data that a computer processes or stores. The foundation of IT is data, which enables businesses to conduct analyses, support operations, and make well-informed decisions.
- </p>
+</p>
  <h3>Database</h3>
          <img src="https://jelvix.com/wp-content/uploads/2020/07/database-security-process.jpg" alt="Database security" width = 300>
          <p>Arranged sets of data that are simple to handle, update, and retrieve.</p>
