@@ -3,112 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historical Perspectives and IT Basics: An Introduction to Computing</title>
-
-  <style>
+    <title>Grade Calculator</title>
+    <style>
         body {
-            font-family: 'Times New Roman', Times, serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1;
-            background-color: cornsilk;
-            color: black;
-         }
-         .box {
-            max-width: 1000px;
-            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             padding: 20px;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-         
-         
-         h1 {
-            text-align: center;
-            color: black;
-         }
-         p {
+        h1 {
+            color: #333;
+        }
+        form {
             margin-bottom: 20px;
-            text-align: justify;
-         }
-         
+        }
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>Historical Perspectives and IT Basics: An Introduction to Computing</h1>
-        <h2>Historical Perspectives</h2>
-        <p>Educators of computing face constant challenges from innovations. Almost every week brings forth some new discovery or concept. that the professional in computing finds fascinating. Captivated by these new concepts, educators can get overly excited about seeing that such new products end up in the classroom. Occasionally, sometimes step appears to work, and other times it doesn't. Considering the computing history can be useful in determining what actions to take and in what order. Avoiding making hasty decisions It's crucial to try something new or follow a trendy approach. Today's computer educators must deal with a wide range of innovative approaches and technologies. The quick and recent growth of click-and-Websites can be visually stunning and striking. Sadly It's unclear whether including these entities in a course in computing is good for learning.
 
-   </p>
-        <p>Even before to this breakthrough being firmly established in a computing the conceptual or curriculum value of the material should be well realized. The body of literature demonstrates numerous situations in which implementation should have come after caution. To illustrate, in a recent episode, a creative approach to programming was taken on a satellite-based rocket launcher. Since the software was never complete When the rocket was tested, it burst and fell to Earth with its payload from multiple satellites, resulting in hundreds of millions of dollars. This example confirms the concept that technology testing necessarily involves the same care and attention to detail as testing the complex software on missile systems. The educational and financial harm brought about by an untested invention in a curriculum for all students may greatly exceed the losses brought on by faulty software.
+<h1>Grade Calculator</h1>
+    <form id="gradeForm">
+        <label for="prelim">Enter Prelim Grade:</label>
+        <input type="text" id="prelim" name="prelim">
+        <button type="submit">Calculate</button>
+    </form>
 
-   </p>
-        <h2>Introduction to IT Basics</h2>
-        <p>In order to help organizations collect, organize, and analyze data that supports their objectives, information technology encompasses a wide range of hardware and software solutions. It also describes workflow procedures based on technology that increase an organization's ability to provide revenue-generating services. Information security, business software development, computer tech support, and business computer networks and databases management are the four primary areas of concentration for IT professionals.
-        </p>
-        <h2>key components</h2>
-        <h3>Hardware</h3>
-        <img src="https://guide-images.cdn.ifixit.com/igi/QDWYeD6JShBQeNxA.large" alt="Hardware image" width = 200>
-        <img src="https://i.ytimg.com/vi/SSnNY8GfZig/maxresdefault.jpg" alt="Types of hardware" width = 300>
-        <p>Physical parts of a computer system, including the input/output devices, memory, storage, and central processing unit (CPU).
+<p class="message" id="message"></p>
 
-  </p>
-        <h4>Examples</h4>
-  <ul>
-            
-  <li>CPU - The computer's "brain," which processes commands and does calculations.
+<script>
+        document.getElementById('gradeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-  </li>
-            <li> RAM - temporary memory used to hold programs and data while they are being used.
+            let prelim = document.getElementById('prelim').value;
+            let messageElement = document.getElementById('message');
+            let passingGrade = 75;
 
-  </li>
-            <li>storage device - Data is permanently stored on hard drives, optical drives, and solid-state drives (SSD).
-         
-  </li>
-         
-  </ul>
- <h3>Software</h3>
-         <img src="https://www.founderjar.com/wp-content/uploads/2022/08/application-software.png" alt="types of software" width = 200>
-         <img src="https://squareboat.com/storage/photos/3/Blog%20Images/Closed-source%20software.jpg" alt="types of software" width = 200>
-         <p>applications and programs that use computer hardware to execute and carry out different tasks.
-         Types</p>
-         <ul>
-            <li>System software - operating systems that control hardware resources and offer an application platform, such as Windows, macOS, and Linux.
+            if (isNaN(prelim) || prelim === '') {
+                messageElement.textContent = 'Invalid input. Please enter a valid numerical Prelim grade.';
+                return;
+            }
 
-  </li>
-         <li>Application Software - software intended for end users, such as video games, web browsers, and Microsoft Office.
+            prelim = parseFloat(prelim);
+            let requiredMidtermFinal = passingGrade - (prelim * 0.30);
 
-  </li>
-        </ul>
- <h3>Network</h3>
-         <img src="https://institute.careerguide.com/wp-content/uploads/2023/08/lan.jpeg" alt="LAN example" width = 300>
-         <p>Systems that link several PCs and gadgets together so they can exchange data and communicate.
-            Types</p>
-        <ul>
-            <li>Local Area Network (LAN) - a network that links computers in a constrained space, like a house or office.
+            if (requiredMidtermFinal < 0) {
+                messageElement.textContent = "You've already passed with your Prelim grade!";
+            } else if (requiredMidtermFinal > 100) {
+                messageElement.textContent = "Unfortunately, it's impossible to pass the subject.";
+            } else {
+                messageElement.textContent = `To pass, you need a combined Midterm and Final score of at least ${requiredMidtermFinal.toFixed(2)}.`;
+            }
+        });
+    </script>
 
-   </li>
-            <li>Wide Area Network (WAN) - a wide-area network that links several local area networks (LANs). The biggest WAN is the internet.
-
-   </li>
-        </ul>
- <h3>Data</h3>
-         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD4Aw4nFInN4W79LN1Er4_Ro1YIvw-0Rq6LQ&s" alt="What is Data?" width = 200>
-         <img src="https://cdn.botpenguin.com/assets/website/Big_Data_35e26a7d4d.webp" alt="Data" width = 200>
-         <p>Data that a computer processes or stores. The foundation of IT is data, which enables businesses to conduct analyses, support operations, and make well-informed decisions.
-
-   </p>
- <h3>Database</h3>
-         <img src="https://jelvix.com/wp-content/uploads/2020/07/database-security-process.jpg" alt="Database security" width = 300>
-         <p>Arranged sets of data that are simple to handle, update, and retrieve.</p>
-        <h4>Example:</h4>
-        <ul>
-            <li>MySQL</li>
-            <li>PostgreSQL</li>
-            <li>NoSQL</li>
-            <li>SQL</li>
-            <li>MongoDB</li>
-        </ul>
 </body>
 </html>
